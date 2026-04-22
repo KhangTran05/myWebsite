@@ -1,37 +1,387 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Khang Tran | Workspace</title>
+    <title>Khang Phuc Tran | Resume</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            display: flex; justify-content: center; align-items: center; 
-            height: 100vh; margin: 0; 
-            background-color: #0f172a; color: #f8fafc; 
+        /* ============================================
+           CSS VARIABLES & RESET (PROFESSIONAL THEME)
+           ============================================ */
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --text-primary: #c9d1d9;
+            --text-secondary: #8b949e;
+            --accent-color: #58a6ff;
+            --border-color: #30363d;
+            --font-sans: 'Inter', sans-serif;
+            --radius: 8px;
+            --transition: all 0.2s ease;
         }
-        .container { 
-            text-align: center; padding: 40px; 
-            background: #1e293b; border-radius: 12px; 
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); 
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
-        h1 { color: #38bdf8; margin-bottom: 10px; }
-        p { color: #94a3b8; font-size: 1.1em; line-height: 1.5; }
-        .btn { 
-            display: inline-block; margin-top: 20px; padding: 12px 24px; 
-            background-color: #38bdf8; color: #0f172a; 
-            text-decoration: none; border-radius: 6px; font-weight: bold; 
-            transition: 0.3s; border: none; cursor: pointer;
+
+        a { text-decoration: none; color: var(--accent-color); transition: var(--transition); }
+        a:hover { color: #79c0ff; text-decoration: underline; }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
-        .btn:hover { background-color: #0ea5e9; transform: translateY(-2px); }
+
+        /* ============================================
+           HEADER / HERO SECTION
+           ============================================ */
+        .header {
+            padding: 6rem 0 3rem;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 3rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .header h2 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            font-size: 0.95rem;
+        }
+
+        .contact-info a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .contact-info a:hover {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        /* ============================================
+           GENERAL SECTION LAYOUT
+           ============================================ */
+        section { margin-bottom: 4rem; }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+            display: inline-block;
+        }
+
+        /* ============================================
+           CV ITEM (EDUCATION & EXPERIENCE)
+           ============================================ */
+        .cv-item { margin-bottom: 2rem; }
+        .cv-item:last-child { margin-bottom: 0; }
+
+        .cv-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.25rem;
+            flex-wrap: wrap;
+        }
+
+        .cv-header h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .cv-date {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .cv-organization {
+            font-size: 1rem;
+            color: var(--accent-color);
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .cv-location {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-left: 0.5rem;
+        }
+
+        .cv-item ul {
+            padding-left: 1.25rem;
+            color: var(--text-primary);
+        }
+
+        .cv-item li { margin-bottom: 0.5rem; font-size: 0.95rem; }
+
+        /* ============================================
+           SKILLS SECTION
+           ============================================ */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-group h4 {
+            font-size: 1rem;
+            color: #ffffff;
+            margin-bottom: 0.75rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            font-size: 0.85rem;
+            padding: 0.25rem 0.75rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            color: var(--text-primary);
+        }
+
+        /* ============================================
+           PROJECTS SECTION
+           ============================================ */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            border-color: #8b949e;
+        }
+
+        .project-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-desc {
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 4rem;
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 600px) {
+            .cv-header { flex-direction: column; }
+            .header { padding: 4rem 0 2rem; }
+            .header h1 { font-size: 2rem; }
+        }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <h1>Khang Tran Space</h1>
-        <p>Hệ thống đang trong quá trình xây dựng và cấu hình.<br>Sẽ sớm ra mắt những dự án mới!</p>
-        <button class="btn" onclick="alert('Kết nối thành công! Tên miền đã hoạt động.')">Kiểm tra hệ thống</button>
+        <header class="header">
+            <h1>Khang Phuc Tran</h1>
+            <h2>Cybersecurity Specialist & Cloud Architecture Enthusiast</h2>
+            
+            <div class="contact-info">
+                <a href="mailto:your.email@example.com">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    khang.tran@email.com </a>
+                <a href="https://linkedin.com/in/yourprofile" target="_blank">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    LinkedIn
+                </a>
+                <a href="https://github.com/KhangTran05" target="_blank">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    GitHub
+                </a>
+                <span style="color: var(--text-secondary); display: flex; align-items: center; gap: 0.5rem;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    Bellevue, WA
+                </span>
+            </div>
+        </header>
+
+        <section>
+            <h2 class="section-title">Professional Summary</h2>
+            <p>
+                Cybersecurity student deeply passionate about Cloud Computing (AWS and Azure) and applying security principles to real-world network architectures. Experienced in building automated tools, data processing scripts, and managing cloud resources. Seeking opportunities to leverage technical precision and creative problem-solving to automate and optimize secure systems.
+            </p>
+        </section>
+
+        <section>
+            <h2 class="section-title">Education</h2>
+            
+            <div class="cv-item">
+                <div class="cv-header">
+                    <h3>Bachelor of Applied Science (BAS) in Cybersecurity</h3>
+                    <span class="cv-date">Expected Graduation: June 2026</span> </div>
+                <div class="cv-organization">
+                    Bellevue College <span class="cv-location">| Bellevue, WA</span>
+                </div>
+                <ul>
+                    <li>Focused coursework: Cloud Architecture (AWS/Azure), Network Security, and Systems Automation.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Experience</h2>
+            
+            <div class="cv-item">
+                <div class="cv-header">
+                    <h3>Student Employee</h3>
+                    <span class="cv-date">Sept 2023 – Present</span> </div>
+                <div class="cv-organization">
+                    Bellevue College Food Service <span class="cv-location">| Bellevue, WA</span>
+                </div>
+                <ul>
+                    <li>Maintained efficient operations in a fast-paced environment, applying strong time-management and communication skills.</li>
+                    <li>Collaborated with team members to ensure compliance with service standards and safety regulations.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-group">
+                    <h4>Languages & Scripting</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Bash</span>
+                        <span class="skill-tag">AppleScript</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h4>Cloud & Infrastructure</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">Microsoft Azure</span>
+                        <span class="skill-tag">Network Security</span>
+                        <span class="skill-tag">Cloud Configurations</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h4>Tools & Frameworks</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Google Apps Script</span>
+                        <span class="skill-tag">Data Processing</span>
+                        <span class="skill-tag">System Automation</span>
+                        <span class="skill-tag">Figma</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Projects</h2>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="cv-header">
+                        <h3 class="project-title">Radar V13</h3>
+                        <span class="cv-date">April 2026</span>
+                    </div>
+                    <p class="project-desc">An automated background data processing tool built with Python Core and Bash to capture, clean, and process text data from Zoom meetings.</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Bash</span>
+                        <span class="skill-tag">Data Parsing</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="cv-header">
+                        <h3 class="project-title">Automated Shift Registration System</h3>
+                        <span class="cv-date">2026</span>
+                    </div>
+                    <p class="project-desc">Developed a frontend interface using HTML/CSS integrated with Google Apps Script to securely process and manage real-time scheduling data in Google Sheets.</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">Google Apps Script</span>
+                        <span class="skill-tag">API Integration</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="cv-header">
+                        <h3 class="project-title">macOS AFK Automation Toolkit</h3>
+                        <span class="cv-date">2026</span>
+                    </div>
+                    <p class="project-desc">Engineered a suite of custom Bash and AppleScript routines to automate systemic tasks and inputs while away from the keyboard.</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Bash</span>
+                        <span class="skill-tag">AppleScript</span>
+                        <span class="skill-tag">macOS</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2026 Khang Phuc Tran. All rights reserved.</p>
+        </footer>
     </div>
+
 </body>
 </html>
